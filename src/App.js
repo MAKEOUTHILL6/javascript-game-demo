@@ -21,23 +21,16 @@ function App() {
         <Routes>
 
           <Route path='/' element={<Home />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/register' element={<Register />} />
+          <Route path='/create' element={<CreatePage />} />
+          <Route path='/edit' element={<EditPage />} />
+          <Route path='/details' element={<DetailsPage />} />
+          <Route path='/catalogue' element={<Catalogue />} />
           
         </Routes>
 
       </main>
-
-{/* 
-      <Login />
-
-      <Register />
-
-      <CreatePage />
-
-      <EditPage />
-
-      <DetailsPage />
-
-      <Catalogue /> */}
 
     </div>
   );
