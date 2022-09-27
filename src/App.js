@@ -24,6 +24,19 @@ function App() {
 			});
 	}, []);
 
+	const addComment = (gameId, comment) => {
+		setGames(state => {
+			const game = state.find(x => x._id == gameId);
+			const comments = game.comments || [];
+			comments.push(comment);
+
+			return [
+				...state.filter(x => x._id !== gameId),
+				{...game, comments}
+			]
+		})
+	}
+
 
 	return (
 		<div id="box">
@@ -41,6 +54,7 @@ function App() {
 					<Route path='/edit' element={<EditPage />} />
 					<Route path='/details' element={<DetailsPage />} />
 					<Route path='/catalogue' element={<Catalogue games={games} />} />
+					<Route path='/catalogue/:gameId' element={<DetailsPage key={games._id} games={games} addComment={addComment} />} />
 
 				</Routes>
 
