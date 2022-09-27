@@ -1,4 +1,6 @@
 import './App.css';
+import { Routes, Route } from 'react-router-dom';
+
 import { Catalogue } from './components/Catalogue/Catalogue';
 import { CreatePage } from './components/CreatePage/CreatePage';
 import { DetailsPage } from './components/DetailsPage/DetailsPage';
@@ -16,8 +18,11 @@ function App() {
 
       {/* Main Content */}
       <main id="main-content">
-        
-        <Home />
+        <Routes>
+
+          <Route path='/' element={<Home />} />
+          
+        </Routes>
 
       </main>
 
