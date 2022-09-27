@@ -1,5 +1,8 @@
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
+import { useEffect, useState } from "react";
+
+import { getGames } from './components/services/gameService';
 
 import { Catalogue } from './components/Catalogue/Catalogue';
 import { CreatePage } from './components/CreatePage/CreatePage';
@@ -11,29 +14,40 @@ import { Login } from './components/Login/Login';
 import { Register } from './components/Register/Register';
 
 function App() {
-  return (
-    <div id="box">
 
-      <Header />
+	const [games, setGames] = useState([]);
 
-      {/* Main Content */}
-      <main id="main-content">
-        <Routes>
+	useEffect(() => {
+		getGames()
+			.then(res => {
+				setGames(res);
+			});
+	}, []);
 
-          <Route path='/' element={<Home />} />
-          <Route path='/login' element={<Login />} />
-          <Route path='/register' element={<Register />} />
-          <Route path='/create' element={<CreatePage />} />
-          <Route path='/edit' element={<EditPage />} />
-          <Route path='/details' element={<DetailsPage />} />
-          <Route path='/catalogue' element={<Catalogue />} />
-          
-        </Routes>
 
-      </main>
+	return (
+		<div id="box">
 
-    </div>
-  );
+			<Header />
+
+			{/* Main Content */}
+			<main id="main-content">
+				<Routes>
+
+					<Route path='/' element={<Home games={games} />} />
+					<Route path='/login' element={<Login />} />
+					<Route path='/register' element={<Register />} />
+					<Route path='/create' element={<CreatePage />} />
+					<Route path='/edit' element={<EditPage />} />
+					<Route path='/details' element={<DetailsPage />} />
+					<Route path='/catalogue' element={<Catalogue games={games} />} />
+
+				</Routes>
+
+			</main>
+
+		</div>
+	);
 }
 
 export default App;
