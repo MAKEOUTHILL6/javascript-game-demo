@@ -13,24 +13,27 @@ function App() {
     <div id="box">
 
       <Header />
-      
-      {/* Main Content */}
-      <main id="main-content"></main>
-      
-      <Home />
 
+      {/* Main Content */}
+      <main id="main-content">
+        
+        <Home />
+
+      </main>
+
+{/* 
       <Login />
-      
+
       <Register />
-     
+
       <CreatePage />
-    
+
       <EditPage />
-      
+
       <DetailsPage />
-      
-      <Catalogue />
-      
+
+      <Catalogue /> */}
+
     </div>
   );
 }
